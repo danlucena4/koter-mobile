@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "koter-app-mobile",
+    "slug": "koter-app-mobile",
+    "scheme": "koter-app-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "backgroundColor": "#1a191e",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1a191e"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1a191e"
+      },
+      "edgeToEdgeEnabled": false,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.danlucena.koterappmobile"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "@react-native-community/datetimepicker"
+    ]
+  }
+}
