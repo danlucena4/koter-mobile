@@ -805,7 +805,7 @@ export default function QuotesScreen() {
             label="Tabela"
             theme={theme}
             insets={insets}
-            onPress={() => router.push({ pathname: '/coming-soon', params: { title: 'Tabelas' } })}
+            onPress={() => router.push('/tables')}
           />
           <BottomNavItem
             icon={<CalculatorIconWrapper size={24} color={theme.colors.primary} />}
@@ -824,7 +824,9 @@ export default function QuotesScreen() {
         </View>
       </SafeAreaView>
 
-      <Modal transparent visible={isFilterOpen} animationType="fade" onRequestClose={() => setIsFilterOpen(false)}>
+      <Modal statusBarTranslucent
+        navigationBarTranslucent
+        transparent visible={isFilterOpen} animationType="fade" onRequestClose={() => setIsFilterOpen(false)}>
         <View style={styles.filterOverlay} pointerEvents="box-none">
           <Pressable style={styles.filterBackdrop} onPress={() => setIsFilterOpen(false)} />
           <View style={[styles.filterMenu, filterMenuStyle]}>
@@ -846,7 +848,9 @@ export default function QuotesScreen() {
         </View>
       </Modal>
 
-      <Modal transparent visible={isTutorialOpen} animationType="fade" onRequestClose={handleCloseTutorial}>
+      <Modal statusBarTranslucent
+        navigationBarTranslucent
+        transparent visible={isTutorialOpen} animationType="fade" onRequestClose={handleCloseTutorial}>
         <View style={styles.tutorialOverlay}>
           <Pressable style={styles.tutorialBackdrop} onPress={handleCloseTutorial} />
           <View style={styles.tutorialModal}>
@@ -880,7 +884,9 @@ export default function QuotesScreen() {
         </View>
       </Modal>
 
-      <Modal transparent visible={!!selectedQuote} animationType="slide" onRequestClose={handleCloseQuote}>
+      <Modal statusBarTranslucent
+        navigationBarTranslucent
+        transparent visible={!!selectedQuote} animationType="slide" onRequestClose={handleCloseQuote}>
         <View style={styles.quoteSheetOverlay}>
           <Pressable style={styles.quoteSheetBackdrop} onPress={handleCloseQuote} />
           <View style={styles.quoteSheet}>
@@ -1073,7 +1079,9 @@ export default function QuotesScreen() {
         </View>
       </Modal>
 
-      <Modal transparent visible={isShareLinkOpen} animationType="fade" onRequestClose={() => setIsShareLinkOpen(false)}>
+      <Modal statusBarTranslucent
+        navigationBarTranslucent
+        transparent visible={isShareLinkOpen} animationType="fade" onRequestClose={() => setIsShareLinkOpen(false)}>
         <View style={styles.shareOverlay}>
           <Pressable style={styles.shareBackdrop} onPress={() => setIsShareLinkOpen(false)} />
           <View style={styles.shareCard}>
@@ -1096,7 +1104,9 @@ export default function QuotesScreen() {
         </View>
       </Modal>
 
-      <Modal transparent visible={isTextShareOpen} animationType="fade" onRequestClose={() => setIsTextShareOpen(false)}>
+      <Modal statusBarTranslucent
+        navigationBarTranslucent
+        transparent visible={isTextShareOpen} animationType="fade" onRequestClose={() => setIsTextShareOpen(false)}>
         <View style={styles.shareOverlay}>
           <Pressable style={styles.shareBackdrop} onPress={() => setIsTextShareOpen(false)} />
           <View style={styles.textCard}>
@@ -1137,6 +1147,8 @@ export default function QuotesScreen() {
       </Modal>
 
       <Modal
+        statusBarTranslucent
+        navigationBarTranslucent
         transparent
         visible={isDeleteConfirmOpen}
         animationType="fade"

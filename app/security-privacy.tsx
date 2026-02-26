@@ -350,7 +350,9 @@ export default function SecurityPrivacyScreen() {
 
 
         <Modal
-          visible={isDeleteModalOpen}
+          statusBarTranslucent
+        navigationBarTranslucent
+        visible={isDeleteModalOpen}
           transparent
           animationType="fade"
           onRequestClose={closeDeleteModal}

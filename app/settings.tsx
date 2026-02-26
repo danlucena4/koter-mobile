@@ -231,10 +231,7 @@ export default function SettingsScreen() {
               {renderMenuItem(
                 <TableIcon size={20} color={theme.colors.textSecondary} />,
                 'Tabelas',
-                () => goComingSoon('Tabelas'),
-                true,
-                false,
-                'Em breve'
+                () => router.push('/tables')
               )}
               {renderMenuItem(
                 <ArtificialIntelligence08Icon size={20} color={theme.colors.textSecondary} />,
@@ -255,10 +252,7 @@ export default function SettingsScreen() {
               {renderMenuItem(
                 <MegaphoneIcon size={20} color={theme.colors.textSecondary} />,
                 'Informativos',
-                () => goComingSoon('Informativos'),
-                true,
-                false,
-                'Em breve'
+                () => router.push('/informativos')
               )}
               {renderMenuItem(
                 <ContactIcon size={20} color={theme.colors.textSecondary} />,

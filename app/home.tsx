@@ -20,6 +20,7 @@ import { useRouter } from 'expo-router';
 import { getTheme } from '../src/utils/theme';
 import { useTheme } from '../src/contexts/ThemeContext';
 import { useUser } from '../src/contexts/UserContext';
+import { useNotifications } from '../src/contexts/NotificationsContext';
 import {
   NotificationIcon,
   ArrowDownIcon,
@@ -70,6 +71,7 @@ const getInitials = (name: string): string => {
   return initials;
 };
 
+
 export default function HomeScreen() {
   const { theme: themeMode } = useTheme();
   const { userName, profileImage } = useUser();
@@ -84,6 +86,7 @@ export default function HomeScreen() {
   console.log('🏠 HomeScreen - hasValidImage:', hasValidImage);
   
   const router = useRouter();
+  const { openNotifications, unreadCount } = useNotifications();
   const insets = useSafeAreaInsets();
   const theme = getTheme(themeMode);
   const styles = createStyles(theme, themeMode, insets);
@@ -102,6 +105,7 @@ export default function HomeScreen() {
   useEffect(() => {
     loadUserLocation();
   }, []);
+
 
   const mergeLocations = (items: LocationOption[]) => {
     const map = new Map<string, LocationOption>();
@@ -197,6 +201,7 @@ export default function HomeScreen() {
     }
   };
 
+
   // Função para obter as iniciais do nome
   const getInitials = (name: string) => {
     const names = name.split(' ');
@@ -238,9 +243,9 @@ export default function HomeScreen() {
               </TouchableOpacity>
             </View>
           </View>
-          <TouchableOpacity style={styles.notificationButton}>
+          <TouchableOpacity style={styles.notificationButton} onPress={openNotifications}>
             <NotificationIcon size={24} color={theme.colors.text} />
-            <View style={styles.notificationBadge} />
+            {unreadCount > 0 && <View style={styles.notificationBadge} />}
           </TouchableOpacity>
         </View>
 
@@ -271,7 +276,7 @@ export default function HomeScreen() {
             {/* Tables Action */}
             <TouchableOpacity
               style={[styles.createQuoteCard, styles.actionCardSecondary]}
-              onPress={() => router.push({ pathname: '/coming-soon', params: { title: 'Tabelas' } })}
+              onPress={() => router.push('/tables')}
             >
               <View style={styles.actionCardHeader}>
                 <View style={styles.createQuoteIconContainer}>
@@ -288,7 +293,9 @@ export default function HomeScreen() {
         </ScrollView>
 
         <Modal
-          transparent
+          statusBarTranslucent
+        navigationBarTranslucent
+        transparent
           animationType="slide"
           visible={isLocationModalOpen}
           onRequestClose={closeLocationModal}
@@ -372,7 +379,7 @@ export default function HomeScreen() {
             label="Tabela"
             theme={theme}
             insets={insets}
-            onPress={() => router.push({ pathname: '/coming-soon', params: { title: 'Tabelas' } })}
+            onPress={() => router.push('/tables')}
           />
           <BottomNavItem
             icon={<CalculatorIconWrapper size={24} color={theme.colors.textSecondary} />}
@@ -407,8 +414,10 @@ function BottomNavItem({ icon, label, active, theme, onPress, insets }: { icon: 
   );
 }
 
-const createStyles = (theme: ReturnType<typeof getTheme>, themeMode: 'light' | 'dark', insets: any) =>
-  StyleSheet.create({
+const createStyles = (theme: ReturnType<typeof getTheme>, themeMode: 'light' | 'dark', insets: any) => {
+  const isDark = themeMode === 'dark';
+
+  return StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: theme.colors.background,
@@ -687,3 +696,4 @@ const createStyles = (theme: ReturnType<typeof getTheme>, themeMode: 'light' | '
       fontFamily: theme.fonts.bold,
     },
   });
+};

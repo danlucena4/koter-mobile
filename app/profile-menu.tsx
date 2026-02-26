@@ -124,7 +124,7 @@ export default function ProfileMenuScreen() {
             label="Tabela"
             theme={theme}
             insets={insets}
-            onPress={() => router.push({ pathname: '/coming-soon', params: { title: 'Tabelas' } })}
+            onPress={() => router.push('/tables')}
           />
           <BottomNavItem
             icon={<CalculatorIconWrapper size={24} color={theme.colors.textSecondary} />}

@@ -56,16 +56,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const theme = getEffectiveTheme();
 
-  // Configura a barra de navegação transparente apenas uma vez na inicialização
-  useEffect(() => {
-    if (Platform.OS === 'android') {
-      // Força edge-to-edge: app desenha por baixo da barra de navegação
-      NavigationBar.setPositionAsync('absolute').catch(() => {});
-      NavigationBar.setBackgroundColorAsync('transparent').catch(() => {});
-      NavigationBar.setBehaviorAsync('overlay-swipe').catch(() => {});
-    }
-  }, []);
-
   // Mantém o background nativo e a cor dos ícones da barra de navegação sincronizados
   useEffect(() => {
     const activeTheme = getTheme(theme);
@@ -77,6 +67,10 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     // Estilo dos botões da barra de navegação (Android)
     if (Platform.OS === 'android') {
       NavigationBar.setButtonStyleAsync(theme === 'light' ? 'dark' : 'light').catch(() => {});
+      NavigationBar.setBackgroundColorAsync(bg).catch(() => {});
+      // Garante que a navigation bar não seja transparente
+      NavigationBar.setPositionAsync('relative').catch(() => {});
+      NavigationBar.setBehaviorAsync('inset-touch').catch(() => {});
     }
   }, [theme]);
 
@@ -117,4 +111,3 @@ export const useTheme = () => {
   }
   return context;
 };
-

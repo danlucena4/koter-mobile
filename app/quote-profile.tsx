@@ -1131,7 +1131,9 @@ export default function QuoteProfileScreen() {
         </TouchableOpacity>
       </View>
 
-      <Modal transparent visible={isConfigOpen} animationType="slide" onRequestClose={() => setIsConfigOpen(false)}>
+      <Modal statusBarTranslucent
+        navigationBarTranslucent
+        transparent visible={isConfigOpen} animationType="slide" onRequestClose={() => setIsConfigOpen(false)}>
         <View style={styles.configOverlay}>
           <Pressable style={styles.configBackdrop} onPress={() => setIsConfigOpen(false)} />
           <View style={styles.configCard}>

@@ -500,7 +500,9 @@ export default function BrokersScreen() {
 
         {menuContext && menuAnchor && (
           <Modal
-            transparent
+            statusBarTranslucent
+        navigationBarTranslucent
+        transparent
             animationType="fade"
             visible
             onRequestClose={closeMenu}

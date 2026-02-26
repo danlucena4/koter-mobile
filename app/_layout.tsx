@@ -6,6 +6,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { ThemeProvider as NavigationThemeProvider, DarkTheme, DefaultTheme } from '@react-navigation/native';
 import { ThemeProvider, useTheme } from '../src/contexts/ThemeContext';
 import { UserProvider } from '../src/contexts/UserContext';
+import { NotificationsProvider } from '../src/contexts/NotificationsContext';
 import { getTheme } from '../src/utils/theme';
 
 // Previne que a splash screen seja escondida automaticamente
@@ -64,9 +65,14 @@ function RootLayoutNav() {
         <Stack.Screen name="profile-menu" />
         <Stack.Screen name="appearance" />
         <Stack.Screen name="coming-soon" />
+        <Stack.Screen name="tables" />
+        <Stack.Screen name="tables/[operatorId]" />
         <Stack.Screen name="quotes" />
         <Stack.Screen name="quote-create" />
         <Stack.Screen name="quote-profile" />
+        <Stack.Screen name="lead/[id]" />
+        <Stack.Screen name="informativos" />
+        <Stack.Screen name="informativos/[id]" />
       </Stack>
       </View>
     </NavigationThemeProvider>
@@ -102,7 +108,9 @@ export default function RootLayout() {
   return (
     <ThemeProvider>
       <UserProvider>
-        <RootLayoutNav />
+        <NotificationsProvider>
+          <RootLayoutNav />
+        </NotificationsProvider>
       </UserProvider>
     </ThemeProvider>
   );

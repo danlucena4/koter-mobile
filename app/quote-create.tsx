@@ -2078,7 +2078,7 @@ export default function QuoteCreateScreen() {
             label="Tabela"
             theme={theme}
             insets={insets}
-            onPress={() => router.push({ pathname: '/coming-soon', params: { title: 'Tabelas' } })}
+            onPress={() => router.push('/tables')}
           />
           <BottomNavItem
             icon={<CalculatorIconWrapper size={24} color={theme.colors.primary} />}
@@ -2122,7 +2122,9 @@ export default function QuoteCreateScreen() {
         )}
       </SafeAreaView>
 
-      <Modal transparent visible={isConverterOpen} animationType="fade" onRequestClose={handleCloseConverter}>
+      <Modal statusBarTranslucent
+        navigationBarTranslucent
+        transparent visible={isConverterOpen} animationType="fade" onRequestClose={handleCloseConverter}>
         <View style={styles.converterOverlay}>
           <Pressable style={styles.converterBackdrop} onPress={handleCloseConverter} />
           <View style={styles.converterModal}>
@@ -2184,7 +2186,9 @@ export default function QuoteCreateScreen() {
         </View>
       </Modal>
 
-      <Modal transparent visible={isEditProfileOpen} animationType="slide" onRequestClose={() => setIsEditProfileOpen(false)}>
+      <Modal statusBarTranslucent
+        navigationBarTranslucent
+        transparent visible={isEditProfileOpen} animationType="slide" onRequestClose={() => setIsEditProfileOpen(false)}>
         <View style={styles.editOverlay}>
           <Pressable style={styles.editBackdrop} onPress={() => setIsEditProfileOpen(false)} />
           <View style={styles.editSheet}>
@@ -2740,7 +2744,9 @@ export default function QuoteCreateScreen() {
         </View>
       </Modal>
 
-      <Modal transparent visible={isLocationModalOpen} animationType="slide" onRequestClose={closeLocationModal}>
+      <Modal statusBarTranslucent
+        navigationBarTranslucent
+        transparent visible={isLocationModalOpen} animationType="slide" onRequestClose={closeLocationModal}>
         <View style={styles.locationModalOverlay}>
           <Pressable style={styles.locationModalBackdrop} onPress={closeLocationModal} />
           <View style={styles.locationModalCard}>
@@ -2807,7 +2813,9 @@ export default function QuoteCreateScreen() {
         </View>
       </Modal>
 
-      <Modal transparent visible={isCrmModalOpen} animationType="slide" onRequestClose={closeCrmModal}>
+      <Modal statusBarTranslucent
+        navigationBarTranslucent
+        transparent visible={isCrmModalOpen} animationType="slide" onRequestClose={closeCrmModal}>
         <View style={styles.crmOverlay}>
           <Pressable style={styles.crmBackdrop} onPress={closeCrmModal} />
           <View style={styles.crmCard}>
@@ -2853,7 +2861,9 @@ export default function QuoteCreateScreen() {
       </Modal>
 
       {activeCrmPicker && (
-        <Modal transparent visible animationType="slide" onRequestClose={closeCrmPicker}>
+        <Modal statusBarTranslucent
+        navigationBarTranslucent
+        transparent visible animationType="slide" onRequestClose={closeCrmPicker}>
           <View style={styles.crmPickerOverlay}>
             <Pressable style={styles.crmPickerBackdrop} onPress={closeCrmPicker} />
             <View style={styles.crmPickerCard}>
@@ -2948,7 +2958,9 @@ export default function QuoteCreateScreen() {
       )}
 
       {pickerConfig && (
-        <Modal transparent visible={!!activePicker} animationType="slide" onRequestClose={closePicker}>
+        <Modal statusBarTranslucent
+        navigationBarTranslucent
+        transparent visible={!!activePicker} animationType="slide" onRequestClose={closePicker}>
           <View style={styles.pickerOverlay}>
             <Pressable style={styles.pickerBackdrop} onPress={closePicker} />
             <View style={styles.pickerCard}>
@@ -3020,7 +3032,9 @@ export default function QuoteCreateScreen() {
       )}
 
       {newQuoterStep && (
-        <Modal transparent visible animationType="slide" onRequestClose={closeNewQuoterFlow}>
+        <Modal statusBarTranslucent
+        navigationBarTranslucent
+        transparent visible animationType="slide" onRequestClose={closeNewQuoterFlow}>
           <View style={styles.newQuoterOverlay}>
             <Pressable style={styles.newQuoterBackdrop} onPress={closeNewQuoterFlow} />
             <View

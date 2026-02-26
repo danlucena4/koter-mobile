@@ -98,7 +98,9 @@ export const DatePicker: React.FC<DatePickerProps> = ({
       {/* iOS: Modal customizado com botões */}
       {show && Platform.OS === 'ios' && (
         <Modal
-          transparent
+          statusBarTranslucent
+        navigationBarTranslucent
+        transparent
           animationType="slide"
           visible={show}
           onRequestClose={handleCancel}
